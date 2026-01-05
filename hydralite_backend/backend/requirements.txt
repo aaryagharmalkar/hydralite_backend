@@ -8,3 +8,4 @@ httpx
 reportlab
 typing-extensions
 groq
+assemblyai
