@@ -8,4 +8,4 @@ httpx
 reportlab
 typing-extensions
 groq
-pyaudioop-lts
+pyaudioop
