@@ -1,3 +1,9 @@
 fastapi
 uvicorn
+python-dotenv
 python-multipart
+pydub
+requests
+httpx
+reportlab
+typing-extensions
