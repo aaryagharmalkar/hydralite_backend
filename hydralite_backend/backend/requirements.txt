@@ -2,9 +2,10 @@ fastapi
 uvicorn
 python-dotenv
 python-multipart
-pydub
+pydub>=0.25.2
 requests
 httpx
 reportlab
 typing-extensions
 groq
+pyaudioop-lts
