@@ -502,6 +502,24 @@ def download_pdf(audio_name: str):
         filename=f"summary_{safe_name}.pdf"
     )
 
+# ================= SUMMARY ENDPOINT =================
+@app.get("/summary/{audio_name}")
+def get_summary(audio_name: str):
+    """Get summary JSON for a processed audio file"""
+    # Sanitize filename
+    safe_name = "".join(c for c in audio_name if c.isalnum() or c in "_-")
+    path = config.SUMMARIES_DIR / f"{safe_name}_summary.json"
+    
+    if not path.exists():
+        raise HTTPException(status_code=404, detail="Summary not ready")
+    
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as e:
+        logger.error(f"Error reading summary: {e}")
+        raise HTTPException(status_code=500, detail="Failed to read summary")
+
 # ================= STARTUP =================
 @app.on_event("startup")
 def on_startup():
